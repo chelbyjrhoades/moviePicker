@@ -1,5 +1,6 @@
 import tkinter as tk
 
+action = ["Wizard of Oz", "Cats", "Frogs"]
 
 LARGE_FONT= ("Verdana", 12)
 
@@ -18,7 +19,7 @@ class SeaofBTCapp(tk.Tk):
 
         self.frames = {}
 
-        for F in (StartPage, PageOne, PageTwo):
+        for F in (StartPage, PageOne, PageTwo, PageThree):
 
             frame = F(container, self)
 
@@ -66,6 +67,11 @@ class PageOne(tk.Frame):
                             command=lambda: controller.show_frame(StartPage))
         button1.pack()
 
+        t = Text(tk)
+        for x in lst:
+            t.insert(END, x + '\n')
+        t.pack()
+
 
 
 class PageTwo(tk.Frame):
@@ -73,6 +79,18 @@ class PageTwo(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         label = tk.Label(self, text="Comedy Movies!!!", font=LARGE_FONT)
+        label.pack(pady=10,padx=10)
+
+        button1 = tk.Button(self, text="Back to Home",
+                            command=lambda: controller.show_frame(StartPage))
+        button1.pack()
+
+
+class PageThree(tk.Frame):
+
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        label = tk.Label(self, text="Fantasy!!!", font=LARGE_FONT)
         label.pack(pady=10,padx=10)
 
         button1 = tk.Button(self, text="Back to Home",
